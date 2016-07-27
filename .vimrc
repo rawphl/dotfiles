@@ -25,7 +25,9 @@ set nocompatible
 set number
 set cursorline
 set encoding=utf-8
-syntax on                           " enable syntax highlighting
+syntax enable                       " enable syntax highlighting
+set background=dark
+colorscheme solarized
 set shiftwidth=4                    " number of spaces to autoindent
 set tabstop=4                       " number of spaces for a tabstop
 set expandtab                       " expand tab to spaces in insert mode
