@@ -9,10 +9,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/kien/ctrlp.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'hhff/SpacegrayEighties.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'bling/vim-bufferline'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -59,9 +56,15 @@ set history=1000
 
 autocmd BufEnter *.ts,*.tsx set filetype=typescript
 
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#bufferline#enabled=1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#branch#enabled=1
 
 let g:ctrlp_cmd = 'CtrlPMixed'
 
@@ -70,21 +73,9 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 let g:nerdtree_tabs_autofind=1
-
+let g:nerdtree_tabs_focus_on_files=1
 " Keybindings
 let mapleader = "\<Space>"
-imap jk <Esc>
+imap jj <Esc>
 nmap , :
 cnoremap ,, <C-c>
-nnoremap <Leader>f :NERDTreeTabsToggle<CR>:NERDTreeTabsFind<CR>   
-nnoremap <Leader>j :NERDTreeFocusToggle<CR>
-nnoremap <Leader>p :CtrlPMixed<CR>
-nnoremap <Leader>1 :b1<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>2 :b2<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>6 :b3<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>4 :b4<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>5 :b5<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>6 :b6<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>7 :b7<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>8 :b8<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
-nnoremap <Leader>9 :b9<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
