@@ -1,32 +1,34 @@
+" $MYVIMRC
+set nocompatible
+filetype off
 
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
+" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'https://github.com/kien/ctrlp.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'hhff/SpacegrayEighties.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'bling/vim-bufferline'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()
+filetype plugin indent on
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
-
-set clipboard=unnamed
-
-set nocompatible
+syntax on
+colorscheme SpacegrayEighties
+set clipboard^=unnamed,unnamedplus
 set nospell
-filetype plugin on
-filetype indent on
 set shiftwidth=4                    " number of spaces to autoindent
 set nocompatible
 set number
 set cursorline
 set encoding=utf-8
-syntax on                           " enable syntax highlighting
-set shiftwidth=4                    " number of spaces to autoindent
 set tabstop=4                       " number of spaces for a tabstop
 set expandtab                       " expand tab to spaces in insert mode
 set autoindent                      " enable autoindenting
@@ -44,13 +46,7 @@ set wildmenu                        " enable wildmenu
 set wildmode=list:longest,full      " how wild mode should behave
 set guioptions-=T                   " remove toolbar in gVim
 set guioptions-=r                   " remove right scrollbar
-set guioptions-=R                   " remove right scrollbar
-set guioptions-=l                   " remove left scrollbar
-set guioptions-=L                   " remove left scrollbar
-set hlsearch                        " highlight search results, see mapping for disable highlighting
-set incsearch                       " set incremental search
-set ignorecase                      " ignores case while searching
-set smartcase                       " if a search contains a upper case char, make search case sensitive
+set guioptions-=R                   " remove right scrollbaset smartcase                       " if a search contains a upper case char, make search case sensitive
 set textwidth=0                     " don't insert EOLs at linebreak
 set noswapfile                      " Don't use swapfile
 set nobackup                        " Don't create annoying backup files
@@ -61,7 +57,34 @@ set t_vb=
 set foldmethod=expr
 set history=1000      
 
-map <c-4> <Esc>:tabclose<CR>
+autocmd BufEnter *.ts,*.tsx set filetype=typescript
 
-noremap , :
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#branch#enabled = 1
 
+let g:ctrlp_cmd = 'CtrlPMixed'
+
+" NERDTREE
+" Close if NERDTree is only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
+let g:nerdtree_tabs_autofind=1
+
+" Keybindings
+let mapleader = "\<Space>"
+imap jk <Esc>
+nmap , :
+cnoremap ,, <C-c>
+nnoremap <Leader>f :NERDTreeTabsToggle<CR>:NERDTreeTabsFind<CR>   
+nnoremap <Leader>j :NERDTreeFocusToggle<CR>
+nnoremap <Leader>p :CtrlPMixed<CR>
+nnoremap <Leader>1 :b1<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>2 :b2<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>6 :b3<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>4 :b4<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>5 :b5<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>6 :b6<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>7 :b7<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>8 :b8<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
+nnoremap <Leader>9 :b9<CR> :NERDTreeTabsFind<CR>:NERDTreeFocusToggle<CR>
