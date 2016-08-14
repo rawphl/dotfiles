@@ -13,6 +13,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'rking/ag.vim'
+Plugin 'Shougo/neocomplete'
 call vundle#end()
 filetype plugin indent on
 
@@ -44,7 +45,6 @@ set so=7                            " keep 7 empty lines from the cursor to the 
 set mouse=a
 set visualbell                      " no annoying beeping
 set t_vb=
-set foldmethod=expr
 set history=1000      
 set backspace=indent,eol,start
 
@@ -61,11 +61,22 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
+" neocomplete
+let g:neocomplete#enable_at_startup = 1 
+let g:neocomplete#enable_smart_case = 1
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 " Keybindings
 let mapleader = "\<Space>"
 imap jj <Esc>
 nmap , :
 cnoremap ,, <C-c>
+" neocomplete <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 nnoremap <Leader>1 :b1<CR>
 nnoremap <Leader>2 :b2<CR>
 nnoremap <Leader>3 :b3<CR>
