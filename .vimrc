@@ -14,6 +14,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'rking/ag.vim'
 Plugin 'Shougo/neocomplete'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -22,7 +24,6 @@ set background=dark
 set clipboard^=unnamed,unnamedplus
 set nospell
 set shiftwidth=4                    " number of spaces to autoindent
-set cursorline                      " highlight current line
 set encoding=utf-8
 set tabstop=4                       " number of spaces for a tabstop
 set expandtab                       " expand tab to spaces in insert mode
@@ -31,6 +32,9 @@ set number                          " view line numbers
 set showmode                        " show current mode
 set ruler                           " always show cursor position
 set showcmd                         " display incomplete commands on lower right
+set showmatch                       " highlight matching braces 
+set incsearch                       " incremental search
+set hlsearch                        " hightlight search results
 set hidden                          " edit another buffer while another one is unsaved IMPORTANT!
 set lazyredraw                      " don't update the display while executing macros
 set laststatus=2                    " always show status line
@@ -70,8 +74,25 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Keybindings
+" easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+
+" incsearch
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
 let mapleader = "\<Space>"
+
 imap jj <Esc>
 nmap , :
 cnoremap ,, <C-c>
@@ -85,3 +106,4 @@ nnoremap <Leader>5 :b5<CR>
 nnoremap <Leader>6 :b6<CR>
 nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprev<CR>
+
