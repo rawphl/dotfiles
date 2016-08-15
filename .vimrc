@@ -16,9 +16,8 @@ Plugin 'rking/ag.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'Shougo/neosnippet' 
-Plugin 'Shougo/neosnippet-snippets'
 Plugin 'osyo-manga/vim-over'
+Plugin 'cohama/lexima.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -54,6 +53,8 @@ set visualbell                      " no annoying beeping
 set t_vb=
 set history=1000      
 set backspace=indent,eol,start
+set splitright
+set splitbelow
 
 autocmd BufEnter *.ts,*.tsx set filetype=typescript
 
@@ -67,6 +68,8 @@ let g:ctrlp_map = '<CR>'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_switch_buffer = 1
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1 
@@ -105,13 +108,7 @@ nmap , :
 cnoremap ,, <C-c>
 " neocomplete 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" neosnippet
-imap <C-k>     <Plug>(neosnippet_expand_or_jump) 
-smap <C-k>     <Plug>(neosnippet_expand_or_jump) xmap <C-k>
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 nnoremap <Leader>1 :b1<CR>
 nnoremap <Leader>2 :b2<CR>
 nnoremap <Leader>3 :b3<CR>
@@ -120,4 +117,7 @@ nnoremap <Leader>5 :b5<CR>
 nnoremap <Leader>6 :b6<CR>
 nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprev<CR>
+
+map <Leader>s :w<CR>
+map <Leader>q :bd<CR>
 
