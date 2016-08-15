@@ -59,5 +59,5 @@ export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home"
 export BLENDER_HOME="/Applications/Blender/blender.app/Contents/MacOS"
 export PATH="/usr/local/heroku/bin:$PATH"
-
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
