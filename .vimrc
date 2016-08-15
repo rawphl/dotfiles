@@ -16,6 +16,9 @@ Plugin 'rking/ag.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'Shougo/neosnippet' 
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'osyo-manga/vim-over'
 call vundle#end()
 filetype plugin indent on
 
@@ -91,13 +94,24 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" vim-over
+"let g:over_enable_auto_nohlsearch = 1
+let g:over_enable_cmd_window = 1
+
 let mapleader = "\<Space>"
 
 imap jj <Esc>
 nmap , :
 cnoremap ,, <C-c>
-" neocomplete <TAB>: completion.
+" neocomplete 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump) 
+smap <C-k>     <Plug>(neosnippet_expand_or_jump) xmap <C-k>
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 nnoremap <Leader>1 :b1<CR>
 nnoremap <Leader>2 :b2<CR>
 nnoremap <Leader>3 :b3<CR>
