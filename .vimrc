@@ -121,3 +121,7 @@ nnoremap <Leader>h :bprev<CR>
 map <Leader>s :w<CR>
 map <Leader>q :bd<CR>
 
+nnoremap <Leader>r :OverCommandLine<CR>
+nnoremap <leader>t :tabedit %<CR>
+nnoremap <leader>z :tabclose<CR>
+
