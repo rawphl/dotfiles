@@ -18,12 +18,15 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'osyo-manga/vim-over'
 Plugin 'cohama/lexima.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on
 
 syntax on
 set background=dark
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus
 set nospell
 set shiftwidth=4                    " number of spaces to autoindent
 set encoding=utf-8
@@ -66,7 +69,8 @@ let g:airline#extensions#bufferline#enabled = 1
 " ctrlp
 let g:ctrlp_map = '<CR>'
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_clear_cache_on_exit = 0
+" Faster without clear, but annoying with git
+let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_switch_buffer = 1
@@ -104,17 +108,19 @@ let g:over_enable_cmd_window = 1
 let mapleader = "\<Space>"
 
 imap jj <Esc>
+vmap jj <Esc> 
 nmap , :
 cnoremap ,, <C-c>
 " neocomplete 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-nnoremap <Leader>1 :b1<CR>
-nnoremap <Leader>2 :b2<CR>
-nnoremap <Leader>3 :b3<CR>
-nnoremap <Leader>4 :b4<CR>
-nnoremap <Leader>5 :b5<CR>
-nnoremap <Leader>6 :b6<CR>
+" easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprev<CR>
 
@@ -124,4 +130,8 @@ map <Leader>q :bd<CR>
 nnoremap <Leader>r :OverCommandLine<CR>
 nnoremap <leader>t :tabedit %<CR>
 nnoremap <leader>z :tabclose<CR>
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
 
