@@ -21,6 +21,7 @@ Plugin 'cohama/lexima.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
 
@@ -60,6 +61,8 @@ set splitright
 set splitbelow
 
 autocmd BufEnter *.ts,*.tsx set filetype=typescript
+" NERDTree
+let NERDTreeIgnore = ["\.pyc$"]
 
 " airline
 let g:airline_powerline_fonts = 1
