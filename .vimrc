@@ -111,7 +111,6 @@ let g:over_enable_cmd_window = 1
 let mapleader = "\<Space>"
 
 imap jj <Esc>
-vmap jj <Esc> 
 nmap , :
 cnoremap ,, <C-c>
 " neocomplete 
