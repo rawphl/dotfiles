@@ -102,3 +102,5 @@ export NVM_DIR="$HOME/.nvm"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias c="clear"
+
+cd

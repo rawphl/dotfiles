@@ -11,6 +11,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'alvan/vim-closetag'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 syntax on
@@ -64,10 +66,23 @@ nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprev<CR>
 map <Leader>f :GFiles<CR>
 
-augroup SyntaxSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-augroup END
+" Complete braces and move between tags
+inoremap <> <><Left>
+inoremap () ()<Left>
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap `` ``<Left>
+
+
+" Disable arrow keys
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 
 " easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -77,4 +92,45 @@ nmap s <Plug>(easymotion-overwin-f)
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#bufferline#enabled = 1 
+let g:airline#extensions#bufferline#enablod = 1 
+
+" emmet-vim
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" vim-closetag
+
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filename = '*.html,*.js,*.jsx,*.tsx'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.tsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,jsx,tsx'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+
+
