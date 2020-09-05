@@ -13,6 +13,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 syntax on
@@ -65,6 +66,7 @@ map <Leader>q :q<CR>
 nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprev<CR>
 map <Leader>f :GFiles<CR>
+map <Leader>b :NERDTreeToggle<CR>
 
 " Complete braces and move between tags
 inoremap <> <><Left>

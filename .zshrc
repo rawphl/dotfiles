@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+¨¨If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -77,7 +77,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # User configuration
-
+export FZF_DEFAULT_COMMAND='rg --files'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -104,3 +104,6 @@ alias vimconfig="vim ~/.vimrc"
 alias c="clear"
 
 cd
+
+# Add colors to the less and man commands.
+export LESS=-R
