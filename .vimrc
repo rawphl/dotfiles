@@ -14,6 +14,8 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'francoiscabrol/ranger.vim'
 call plug#end()
 
 syntax on
@@ -65,9 +67,11 @@ map <Leader>s :w<CR>
 map <Leader>q :q<CR>
 nnoremap <Leader>l :bnext<CR>
 nnoremap <Leader>h :bprev<CR>
-map <Leader>f :GFiles<CR>
+map <Leader>z :Files<CR>
 map <Leader>b :NERDTreeToggle<CR>
-
+let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
+let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 " Complete braces and move between tags
 inoremap <> <><Left>
 inoremap () ()<Left>
