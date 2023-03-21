@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	name = rawphl
+	email = ivancammarota@gmail.com
+[core]
+	editor = vim
